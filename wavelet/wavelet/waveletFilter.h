@@ -1,7 +1,21 @@
-class filter {
+class waveletFilter {
+private:
     int filterLength = 9;
     double * lowPassFilter;
     double * highPassFilter;
+    
+public:
+    bool isSymmetric() {
+        //TODO: this has not being verified
+        return true;
+    }
+    
+    double * getLowPassFilter() {
+        return lowPassFilter;
+    }
+    double * getHighPassFilter() {
+        return highPassFilter;
+    }
     
     void allocateFilterMemory() {
         //cuda alloc here
@@ -15,7 +29,7 @@ class filter {
         delete [] highPassFilter;
     }
     
-    ~filter() {
+    ~waveletFilter() {
         deallocFilterMemory();
     }
     
