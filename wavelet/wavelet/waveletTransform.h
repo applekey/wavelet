@@ -1,11 +1,9 @@
-#include "waveletFilter.h"
 class waveletTransform {
-private;
-    waveletFilter filter;
     
 public:
     void forwardTransform(double * inputSignal, int signalLength
-                          double * filter, int filterLength) {
+                          double * lowFilter, double * highFilter,
+                          int filterLength) {
         //extend the signal with 0's to the right and to the left
         int extendedSigLength = signalLength + 2 *(filterLength - 1);
         
@@ -34,21 +32,36 @@ public:
         }
         
         //delete the extended signal
+
+        //TODO: figure out output coeffficent
     }
-    
-    void extendSignal() {
         
-    }
-    
     void applyConvolution(int inputIndex,
                           double * inputSignal, int signalLength
-                          double * filter, int filterLength){
+                          double * filter
+                          int filterLength, 
+                          double * outputCoefficient
+                          int coefficientIndex){
+        //assume that the filterLength will be an odd value
+        int filterRadius = filterLength/2;
+        double sum = 0;
+        double * filter = (inputIndex %2 == 0) ? lowFilter : highFilter;
+        int coefficentIndex = 0;
+        for(int i = 0; i<= filterRadius;i++) {
+            //convole front
+            sum += filter[i] * inputSignal[inputIndex - 1 - filterRadius + i];
         
+            //convolve back
+            sum += filter[filterRadius + 1 + i] * inputSignal[inputIndex + 1 + i];
+        }
+        sum += filter[filterRadius + 1] * inputSignal[inputIndex];
+
+        outputCoefficient[coefficientIndex] = sum;
     }
     
     int getLength(int inputSignalLength) {
         //assume all filters are symetric
-        return (inputSignalLength % 2 == 0) ?
+        return (inputSignalLength % 2 != 0) ?
             (sigInLen- 1) / 2 : sigInLen / 2;
     }
 };
