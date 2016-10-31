@@ -1,7 +1,7 @@
 class waveletTransform {
     
 public:
-    void forwardTransform(double * inputSignal, int signalLength
+    void forwardTransform(double * inputSignal, int signalLength,
                           double * lowFilter, double * highFilter,
                           int filterLength) {
         //extend the signal with 0's to the right and to the left
@@ -27,8 +27,10 @@ public:
         //apply convolution kernel to inputSignal
         // assume that the signal has being extended
         for(int i = 0; i< signalLength; i++) {
-            applyConvolution(i, inputSignal, signalLength,
-                             filter, filterLength);
+		    double * filter = (i % 2 != 0) ? lowFilter : highFilter;
+            int coefficientIndex = i/2;
+            //applyConvolution(i, inputSignal, signalLength,
+                             //filter, filterLength, coefficientIndex);
         }
         
         //delete the extended signal
@@ -37,16 +39,14 @@ public:
     }
         
     void applyConvolution(int inputIndex,
-                          double * inputSignal, int signalLength
-                          double * filter
+                          double * inputSignal, int signalLength,
+                          double * filter,
                           int filterLength, 
-                          double * outputCoefficient
+                          double * outputCoefficient,
                           int coefficientIndex){
         //assume that the filterLength will be an odd value
         int filterRadius = filterLength/2;
         double sum = 0;
-        double * filter = (inputIndex %2 == 0) ? lowFilter : highFilter;
-        int coefficentIndex = 0;
         for(int i = 0; i<= filterRadius;i++) {
             //convole front
             sum += filter[i] * inputSignal[inputIndex - 1 - filterRadius + i];
@@ -62,6 +62,6 @@ public:
     int getLength(int inputSignalLength) {
         //assume all filters are symetric
         return (inputSignalLength % 2 != 0) ?
-            (sigInLen- 1) / 2 : sigInLen / 2;
+            (inputSignalLength- 1) / 2 : inputSignalLength / 2;
     }
 };

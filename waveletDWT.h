@@ -1,26 +1,27 @@
 #include "waveletTransform.h"
 #include "waveletFilter.h"
-2
+
+#define COEFF_TYPE double 
+
 class waveletDWT {
-private;
+private:
     waveletFilter filter;
     waveletTransform transform;
 public:
 	//assume that the signal length is an odd
-	void DWT1D(double * inputSignal, int signalLength
+	void DWT1D(double * inputSignal, int signalLength,
 			   double * lowCoeff, double * highCoeff) {
 		//get the filter low and high and apply
 		double * lowFilter = filter.getLowPassFilter();
 		double * highFilter = filter.getHighPassFilter();
 
-		//calculate length
-
-		//get fitler
 		//apply fitler to convolution kernel
-		for(int i = 0; i<signalLength;i++) {
-			double * filter = (i % 2 ! = 0) ? lowFilter : highFilter;
-			transform.applyConvolution();
+		for(int i = 0; i< signalLength;i++) {
+            //allocate high coeeficient buffer
+            double * coeff = (i % 2 != 0) ? lowCoeff : highCoeff;
+            //the signal is split, 
+            int coefficientIndex = i/2;
+            //transform.applyConvolution(inputSignal, signalLength, coefficientIndex, coeff);
 		}
-
 	}
 };
