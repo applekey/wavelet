@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/applekey/Documents/cudaWavelet/main.cpp
+iostream
+-
+waveletDWT.h
+/Users/applekey/Documents/cudaWavelet/waveletDWT.h
+
+/Users/applekey/Documents/cudaWavelet/waveletDWT.h
+waveletTransform.h
+/Users/applekey/Documents/cudaWavelet/waveletTransform.h
+waveletFilter.h
+/Users/applekey/Documents/cudaWavelet/waveletFilter.h
+
+/Users/applekey/Documents/cudaWavelet/waveletFilter.h
+
+/Users/applekey/Documents/cudaWavelet/waveletTransform.h
+
