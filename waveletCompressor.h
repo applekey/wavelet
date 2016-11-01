@@ -12,9 +12,6 @@ public:
                      int levelsToCompress, std::vector<int> & coefficentIndicies) {
 
     	//apply the coefficients to the wavelet
-   		//figure out low coeff
-   		//figure out high coeff
-
    		//calculate coefficient length
    		calculateCoefficientLength(coefficentIndicies, levelsToCompress, signalLength);
    		//add 2 extra 
@@ -30,7 +27,13 @@ public:
 
         for(int level = 0; level< levelsToCompress; level++) {
 
-   		    //dwt.DWT1D(currentInputSignal, signalLength);
+            struct signalWithLength highCoeffBuffer;
+            highCoeffBuffer.length = coefficientLength;
+            highCoeffBuffer.coefficients = new COEFF_TYPE[coefficientLength];
+
+   		    dwt.DWT1D(currentInputSignal, signalLength,
+                      lowCoeffBuffer.coefficients, highCoeffBuffer.coefficients);
+
             //swap signal for new signal which are now the low coefficients
             lowCoeffBuffer.length = coefficientLength;
             currentInputSignal = lowCoeffBuffer.coefficients;
