@@ -1,1 +1,0 @@
-/usr/bin/c++   -g   CMakeFiles/wave.dir/main.cpp.o  -o wave -rdynamic 
