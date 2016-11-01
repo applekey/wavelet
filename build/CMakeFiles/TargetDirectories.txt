@@ -1,1 +1,1 @@
-/Users/applekey/Documents/cudaWavelet/build/CMakeFiles/wave.dir
+/home/users/applekey/documents/wavelet/build/CMakeFiles/wave.dir

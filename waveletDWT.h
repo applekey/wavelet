@@ -12,6 +12,7 @@ public:
     void DWT1D(double * inputSignal, int signalLength,
                double * lowCoeff, double * highCoeff) {
         //get the filter low and high and apply
+        filter.constructFilters();
         double * lowFilter = filter.getLowPassFilter();
         double * highFilter = filter.getHighPassFilter();
         int filterLength = filter.getFilterLength();

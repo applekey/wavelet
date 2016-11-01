@@ -6,27 +6,27 @@
 
 #IncludeRegexTransform: 
 
-/Users/applekey/Documents/cudaWavelet/main.cpp
+/home/users/applekey/documents/wavelet/main.cpp
 iostream
 -
 vector
 -
 waveletCompressor.h
-/Users/applekey/Documents/cudaWavelet/waveletCompressor.h
+/home/users/applekey/documents/wavelet/waveletCompressor.h
 
-/Users/applekey/Documents/cudaWavelet/waveletCompressor.h
+/home/users/applekey/documents/wavelet/waveletCompressor.h
 waveletDWT.h
-/Users/applekey/Documents/cudaWavelet/waveletDWT.h
+/home/users/applekey/documents/wavelet/waveletDWT.h
 cassert
 -
 
-/Users/applekey/Documents/cudaWavelet/waveletDWT.h
+/home/users/applekey/documents/wavelet/waveletDWT.h
 waveletTransform.h
-/Users/applekey/Documents/cudaWavelet/waveletTransform.h
+/home/users/applekey/documents/wavelet/waveletTransform.h
 waveletFilter.h
-/Users/applekey/Documents/cudaWavelet/waveletFilter.h
+/home/users/applekey/documents/wavelet/waveletFilter.h
 
-/Users/applekey/Documents/cudaWavelet/waveletFilter.h
+/home/users/applekey/documents/wavelet/waveletFilter.h
 
-/Users/applekey/Documents/cudaWavelet/waveletTransform.h
+/home/users/applekey/documents/wavelet/waveletTransform.h
 

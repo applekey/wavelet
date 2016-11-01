@@ -39,6 +39,7 @@ public:
     }
 
     void constructFilters() {
+        allocateFilterMemory();
         reverseFilter(hm4_44, lowPassFilter);
         qmfReverseFilter(h4, highPassFilter);
     }
