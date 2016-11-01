@@ -9,8 +9,16 @@
 /Users/applekey/Documents/cudaWavelet/main.cpp
 iostream
 -
+vector
+-
+waveletCompressor.h
+/Users/applekey/Documents/cudaWavelet/waveletCompressor.h
+
+/Users/applekey/Documents/cudaWavelet/waveletCompressor.h
 waveletDWT.h
 /Users/applekey/Documents/cudaWavelet/waveletDWT.h
+cassert
+-
 
 /Users/applekey/Documents/cudaWavelet/waveletDWT.h
 waveletTransform.h

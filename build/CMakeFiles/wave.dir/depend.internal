@@ -3,6 +3,7 @@
 
 CMakeFiles/wave.dir/main.cpp.o
  /Users/applekey/Documents/cudaWavelet/main.cpp
+ /Users/applekey/Documents/cudaWavelet/waveletCompressor.h
  /Users/applekey/Documents/cudaWavelet/waveletDWT.h
  /Users/applekey/Documents/cudaWavelet/waveletFilter.h
  /Users/applekey/Documents/cudaWavelet/waveletTransform.h
