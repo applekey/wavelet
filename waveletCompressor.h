@@ -58,7 +58,7 @@ public:
 
         totalLength = 0;
         int currentCoefficientLength = inputSignalLength;
-        L.reserve(levels + 2);
+        L.reserve(levels + 2); //+ 2 levels, 1 is the final low coefficients and the last as an end bookeeping 
         L[0] = 0;
 
         for(int i = 1 ; i < levels; i++) {
@@ -68,6 +68,7 @@ public:
 
         //append last level, which is just the high and low coefficients
         L[levels] = currentCoefficientLength + L[levels-1];
-        totalLength = currentCoefficientLength + L[levels];
+        L[levels+1] = currentCoefficientLength + L[levels];
+        totalLength = L[levels + 1];
     }
 };
