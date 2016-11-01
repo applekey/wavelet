@@ -14,14 +14,12 @@ public:
         //get the filter low and high and apply
         double * lowFilter = filter.getLowPassFilter();
         double * highFilter = filter.getHighPassFilter();
+        int filterLength = filter.getFilterLength();
 
         //apply fitler to convolution kernel
-        for(int i = 0; i< signalLength; i++) {
-            //allocate high coeeficient buffer
-            double * coeff = (i % 2 != 0) ? lowCoeff : highCoeff;
-            //the signal is split,
-            int coefficientIndex = i/2;
-            //transform.applyConvolution(inputSignal, signalLength, coefficientIndex, coeff);
-        }
+        transform.forwardTransform(inputSignal, signalLength,
+                                   lowFilter, highFilter, 
+                                   lowCoeff, highCoeff,
+                                   filterLength);
     }
 };

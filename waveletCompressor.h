@@ -21,7 +21,7 @@ public:
         int currentOutputCoefficientIndex = 0;
 
         //calculate length
-        int coefficientLength = signalLength/2;//assume that all signal lengths are powers of 2
+        int coefficientLength = signalLength / 2; //assume that all signal lengths are powers of 2
 
         //allocate low coeeficient buffer, we'll just re-use this
         double * currentInputSignal = inputSignal;
@@ -37,7 +37,7 @@ public:
 
             dwt.DWT1D(currentInputSignal, signalLength,
                       lowCoeffBuffer.coefficients, highCoeffBuffer.coefficients);
-            outputCoefficients +=  coefficentIndicies[level];
+            outputCoefficients += coefficentIndicies[level];
 
             //swap signal for new signal which are now the low coefficients
             lowCoeffBuffer.length = coefficientLength;
@@ -45,7 +45,7 @@ public:
 
             //the coeffficients are now the new signal
             signalLength = coefficientLength;
-            coefficientLength /=2;
+            coefficientLength /= 2;
         }
     }
 
@@ -57,7 +57,7 @@ public:
         L.reserve(levels + 2);
         L[0] = 0;
 
-        for(int i =1 ; i < levels; i++) {
+        for(int i = 1 ; i < levels; i++) {
             totalLength += currentCoefficientLength;
             L[i] = currentCoefficientLength;
             currentCoefficientLength /= 2;
@@ -65,6 +65,6 @@ public:
         }
         //append last level, which is just the high and low coefficients
         L[levels] = currentCoefficientLength /= 2;
-        L[levels +1] = currentCoefficientLength /= 2;
+        L[levels + 1] = currentCoefficientLength /= 2;
     }
 };
