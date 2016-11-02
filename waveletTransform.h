@@ -24,7 +24,7 @@ public:
         }
 
         //apply convolution kernel to inputSignal
-        // assume that the signal has being extended
+        //assume that the signal has being extended
         for(int i = 0; i < signalLength; i++) {
             double * filter = (i % 2 != 0) ? lowFilter : highFilter;
             double * outputCoefficient = (i % 2 != 0) ? lowCoeff : highCoeff; 

@@ -5,15 +5,14 @@
 void printCoefficients(std::vector<int>& coefficientLengths, double * outputSignal) {
     int coefficientLevels = coefficientLengths.size();
     //last coefficient level is just a place holder
-    int currentOutputIndex = 0;
-    for(int i = 1; i< coefficientLevels;i++) {
+    for(int i = 0; i < coefficientLevels - 1;i++) {
         std::cerr<<"Level: "<<i<<std::endl;
-        int levelCoefficientSize = coefficientLengths[i];
-        for(int j = 0; j<levelCoefficientSize;j++) {
-            double coeffVal = outputSignal[currentOutputIndex + j];
+        int levelCoefficientIndex = coefficientLengths[i];
+        int numberOfCoefficents = coefficientLengths[i +1] - coefficientLengths[i];
+        for(int j = 0; j<numberOfCoefficents;j++) {
+            double coeffVal = outputSignal[levelCoefficientIndex + j];
             std::cerr<<coeffVal<<" ";
         }
-        currentOutputIndex += levelCoefficientSize;
         std::cerr<<std::endl;
     }
 }

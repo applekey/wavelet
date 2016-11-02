@@ -19,7 +19,6 @@ public:
         //allocate buffer for all high coefficients
         double * outputCoefficients = new double[totalCoefficientLength];
         double * currentCoeffPointer = outputCoefficients;
-        int currentOutputCoefficientIndex = 0;
 
         //calculate length
         int coefficientLength = signalLength / 2; //assume that all signal lengths are powers of 2
@@ -35,12 +34,17 @@ public:
             struct signalWithLength highCoeffBuffer;
             highCoeffBuffer.length = coefficientLength;
             highCoeffBuffer.coefficients = currentCoeffPointer;
-
+            
+            if(level == levelsToCompress -1) {
+                //finally copy the end low coefficients
+                lowCoeffBuffer.coefficients = currentCoeffPointer + coefficientLength;
+            }
+            
             dwt.DWT1D(currentInputSignal, signalLength,
                       lowCoeffBuffer.coefficients, highCoeffBuffer.coefficients);
 
             currentCoeffPointer += coefficentIndicies[level];
-
+            
             //swap signal for new signal which are now the low coefficients
             lowCoeffBuffer.length = coefficientLength;
             currentInputSignal = lowCoeffBuffer.coefficients;
@@ -49,7 +53,7 @@ public:
             signalLength = coefficientLength;
             coefficientLength /= 2;
         }
-
+        
         return outputCoefficients;
     }
 
@@ -57,8 +61,8 @@ public:
                                     int inputSignalLength, int & totalLength) {
 
         totalLength = 0;
-        int currentCoefficientLength = inputSignalLength;
-        L.reserve(levels + 2); //+ 2 levels, 1 is the final low coefficients and the last as an end bookeeping 
+        int currentCoefficientLength = inputSignalLength/2; //assume that all signals are powers of 2
+        L.resize(levels + 2); //+ 2 levels, 1 is the final low coefficients and the last as an end bookeeping
         L[0] = 0;
 
         for(int i = 1 ; i < levels; i++) {
