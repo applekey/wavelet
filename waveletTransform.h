@@ -54,6 +54,7 @@ public:
             sum += filter[(filterRadius + 1) + i] * inputSignal[inputIndex + 1 + i];
         }
         sum += filter[filterRadius + 1] * inputSignal[inputIndex];
+        
 
         outputCoefficient[coefficientIndex] = sum;
     }

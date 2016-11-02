@@ -26,7 +26,7 @@ int main(int argc, const char * argv[]) {
         inputSignal[0] = 1.0;
     }
 
-    int levelsToCompress = 1;
+    int levelsToCompress = 2;
     std::vector<int> coefficientLengths;
     double * coefficients = compressor.compressWave(inputSignal, signalLength, 
                                                         levelsToCompress, coefficientLengths);
